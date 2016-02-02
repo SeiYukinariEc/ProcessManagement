@@ -1,0 +1,34 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr class="danger">
+            <th>名前</th>
+            <th>予定(今週)</th>
+            <th>実績(今週)</th>
+            <th>予定(来週)</th>
+            <th>実績(来週)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($members as $member) : ?>
+            <tr>
+                <td>
+                    <?php echo $this->escapeHtml($member->getUserName()); ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($member->getThisWeekEstimatedHours()); ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($member->getThisWeekActualHours()); ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($member->getNextWeekEstimatedHours()); ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($member->getNextWeekActualHours()); ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

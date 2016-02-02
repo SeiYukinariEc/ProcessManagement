@@ -1,0 +1,33 @@
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr class="danger">
+            <th>名前</th>
+            <th>予定(今週)</th>
+            <th>実績(今週)</th>
+            <th>予定(来週)</th>
+            <th>実績(来週)</th>
+        </tr>
+        <?php foreach ($projects as $project) : ?>
+            <tr>
+                <td>
+                    <a target="_blank" href="<?php echo $project->getBackLogUrl() ?> ">
+                        <?php echo $this->escapeHtml($project->getProjectName()); ?>
+                    </a>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($project->getThisWeekEstimatedHours()); ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($project->getThisWeekActualHours()); ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($project->getNextWeekEstimatedHours()); ?>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($project->getNextWeekActualHours()); ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
