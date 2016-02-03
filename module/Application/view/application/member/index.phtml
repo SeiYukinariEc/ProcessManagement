@@ -13,7 +13,7 @@
         <?php foreach ($members as $member) : ?>
             <tr>
                 <td>
-                    <a target="_blank" href="<?php echo $member->getDetailUrl() ?> ">
+                    <a href="<?php echo $member->getDetailUrl() ?> ">
                         <?php echo $this->escapeHtml($member->getUserName()); ?>
                     </a>
                 </td>

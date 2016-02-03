@@ -71,7 +71,7 @@ class UserService
                 $userDetail = new UserDetail();
                 $userDetail->setProjectName($project['name']);
                 $userDetail->setThisWeekEstimatedHours($issue['estimatedHours']);
-                $userDetail->setThisWeekEstimatedHours($issue['actualHours']);
+                $userDetail->setThisWeekActualHours($issue['actualHours']);
                 $userDetail->setSummary($issue['summary']);
                 $userDetail->setPriority($issue['priority']['name']);
                 $userDetail->setStatus($issue['status']['name']);

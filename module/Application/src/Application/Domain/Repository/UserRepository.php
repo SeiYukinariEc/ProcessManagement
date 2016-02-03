@@ -22,4 +22,18 @@ final class UserRepository extends AbstractRepository
             )
             ->toArray();
     }
+
+    public function getUserByPk($id)
+    {
+        return Ginq::from($this->getAll())
+            ->where(function ($user) use ($id) {
+                return $user['id'] == $id;
+            }
+            )
+            ->select(function ($user) {
+                return $user;
+            }
+            )
+            ->firstOrElse(null);
+    }
 }

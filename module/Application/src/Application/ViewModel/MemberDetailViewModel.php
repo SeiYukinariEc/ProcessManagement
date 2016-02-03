@@ -22,10 +22,13 @@ class MemberDetailViewModel extends ViewModel
 
         $userService = Factory::getInstance()->getUserService();
         $issues = $userService->getMemberDetailData($this->userId);
+        $user = Factory::getInstance()->getUserRepository()->getUserByPk($this->userId);
+
 
         $this->setVariables(
             [
                 'issues' => $issues,
+                'userName' => $user['name']
             ]
             , true);
     }
