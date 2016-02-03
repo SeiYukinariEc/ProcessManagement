@@ -3,7 +3,6 @@
 
 namespace Application\Controller;
 
-use Application\ViewModel\MemberViewModel;
 use Application\ViewModel\ProjectViewModel;
 use Zend\Mvc\Controller\AbstractActionController;
 

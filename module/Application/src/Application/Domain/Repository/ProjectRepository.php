@@ -27,4 +27,13 @@ final class ProjectRepository extends AbstractRepository
             )
             ->toArray();
     }
+
+    public function getProjectByPk($id)
+    {
+        return Ginq::from($this->getAll())
+            ->where(function ($row) use ($id) {
+                return $row['id'] = $id;
+            })
+            ->firstOrElse(null);
+    }
 }

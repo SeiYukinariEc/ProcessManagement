@@ -4,9 +4,9 @@
 namespace Application\Controller;
 
 
+use Application\ViewModel\MemberDetailViewModel;
 use Application\ViewModel\MemberViewModel;
 use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
 
 class MemberController extends AbstractActionController
 {
@@ -15,4 +15,18 @@ class MemberController extends AbstractActionController
         $viewModel = new MemberViewModel();
         return $viewModel;
     }
+
+    public function detailAction()
+    {
+
+        $userId = $this->params()->fromQuery('id');
+        if (!$userId) {
+            return $this->redirect()->toUrl('application');
+        }
+
+
+        $viewModel = new MemberDetailViewModel($userId);
+        return $viewModel;
+    }
+
 }

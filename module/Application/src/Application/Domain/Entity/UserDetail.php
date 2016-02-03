@@ -1,23 +1,25 @@
 <?php
 
+
 namespace Application\Domain\Entity;
 
-class UserInfo
+
+class UserDetail
 {
     /**
      * @return mixed
      */
-    public function getUserName()
+    public function getProjectName()
     {
-        return $this->userName;
+        return $this->projectName;
     }
 
     /**
-     * @param mixed $userName
+     * @param mixed $projectName
      */
-    public function setUserName($userName)
+    public function setProjectName($projectName)
     {
-        $this->userName = $userName;
+        $this->projectName = $projectName;
     }
 
     /**
@@ -87,38 +89,52 @@ class UserInfo
     /**
      * @return mixed
      */
-    public function getUserId()
+    public function getSummary()
     {
-        return $this->userId;
+        return $this->summary;
     }
 
     /**
-     * @param mixed $userId
+     * @param mixed $summary
      */
-    public function setUserId($userId)
+    public function setSummary($summary)
     {
-        $this->userId = $userId;
+        $this->summary = $summary;
     }
 
     /**
      * @return mixed
      */
-    public function getDetailUrl()
+    public function getPriority()
     {
-        return $this->detailUrl;
+        return $this->priority;
     }
 
     /**
-     * @param mixed $detailUrl
+     * @param mixed $priority
      */
-    public function setDetailUrl($detailUrl)
+    public function setPriority($priority)
     {
-        $this->detailUrl = $detailUrl;
+        $this->priority = $priority;
     }
 
-    private $userId;
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 
-    private $userName;
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    private $projectName;
 
     private $thisWeekEstimatedHours;
 
@@ -128,5 +144,11 @@ class UserInfo
 
     private $nextWeekActualHours;
 
-    private $detailUrl;
+    private $summary;
+
+    private $priority;
+
+    private $status;
+
+
 }
