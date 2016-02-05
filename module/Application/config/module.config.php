@@ -76,7 +76,8 @@ return array(
         'invokables' => array(
             'Application\Controller\Index' => Controller\IndexController::class,
             'Application\Controller\Member' => Controller\MemberController::class,
-            'Application\Controller\Project' => Controller\ProjectController::class
+            'Application\Controller\Project' => Controller\ProjectController::class,
+            'Application\Controller\MemberMonth' => Controller\MemberMonthController::class
         ),
     ),
     'view_manager' => array(

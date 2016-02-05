@@ -1,0 +1,37 @@
+<h1>メンバー一覧(月)</h1>
+<div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr class="danger">
+            <th>名前</th>
+            <th>予定(今月)</th>
+            <th>実績(今月)</th>
+            <th>予定(来月)</th>
+            <th>実績(来月)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($members as $member) : ?>
+            <tr>
+                <td>
+                    <a href="<?php echo $member->getDetailUrl() ?> ">
+                        <?php echo $this->escapeHtml($member->getUserName()); ?>
+                    </a>
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($member->getThisWeekEstimatedHours()); ?>h
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($member->getThisWeekActualHours()); ?>h
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($member->getNextWeekEstimatedHours()); ?>h
+                </td>
+                <td>
+                    <?php echo $this->escapeHtml($member->getNextWeekActualHours()); ?>h
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>

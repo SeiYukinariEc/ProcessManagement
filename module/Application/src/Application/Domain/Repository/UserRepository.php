@@ -8,9 +8,15 @@ use Ginq\Ginq;
 
 final class UserRepository extends AbstractRepository
 {
+
+    private $allData;
+
     public function getAll()
     {
-        return $this->backlog->users->get();
+        if (!isset($this->allData)) {
+            $allData = $this->backlog->users->get();
+        }
+        return $allData;
     }
 
     public function getUserIds()
