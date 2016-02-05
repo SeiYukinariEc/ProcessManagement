@@ -32,7 +32,7 @@ final class ProjectRepository extends AbstractRepository
     {
         return Ginq::from($this->getAll())
             ->where(function ($row) use ($id) {
-                return $row['id'] = $id;
+                return $row['id'] == $id;
             })
             ->firstOrElse(null);
     }
