@@ -25,6 +25,22 @@ class ProjectSumInfo
     /**
      * @return mixed
      */
+    public function getArchived()
+    {
+        return $this->archived;
+    }
+
+    /**
+     * @param mixed $archived
+     */
+    public function setArchived($archived)
+    {
+        $this->archived = $archived;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getSumEstimatedHours()
     {
         return $this->sumEstimatedHours;
@@ -119,6 +135,8 @@ class ProjectSumInfo
     }
 
     private $projectName;
+
+    private $archived;
 
     private $sumEstimatedHours;
 

@@ -71,6 +71,8 @@ class ProjectService
 
             $projectSumInfo = new ProjectSumInfo();
             $projectSumInfo->setProjectName($project['name']);
+            $archived = ($project['archived'] === true) ? '◯' : '';
+            $projectSumInfo->setArchived($archived);
             $projectSumInfo->setSumEstimatedHours($estimatedHours);
             $projectSumInfo->setSumActualHours($actualHours);
             $estimatedCost = (int)$estimatedHours * Cost::getCostPerHourPerPerson();

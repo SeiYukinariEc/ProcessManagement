@@ -12,7 +12,6 @@ final class ProjectRepository extends AbstractRepository
     {
         return $this->backlog->projects->get(
             [
-                'archived' => false,
                 'all' => true
             ]
         );

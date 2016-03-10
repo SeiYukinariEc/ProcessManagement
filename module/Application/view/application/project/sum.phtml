@@ -5,6 +5,7 @@
         <thead>
         <tr class="danger">
             <th>名前</th>
+            <th>完了</th>
             <th>予定(時間)</th>
             <th>実績(時間)</th>
             <th>粗利</th>
@@ -17,6 +18,9 @@
                     <a target="_blank" href="<?php echo $project->getBackLogUrl() ?> ">
                         <?php echo $this->escapeHtml($project->getProjectName()); ?>
                     </a>
+                </td>
+                <td align="center">
+                    <?php echo $this->escapeHtml($project->getArchived()); ?>
                 </td>
                 <td align="right">
                     <?php echo $this->escapeHtml($project->getSumEstimatedHours()); ?>h
