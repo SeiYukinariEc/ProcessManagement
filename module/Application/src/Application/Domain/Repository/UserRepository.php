@@ -14,9 +14,9 @@ final class UserRepository extends AbstractRepository
     public function getAll()
     {
         if (!isset($this->allData)) {
-            $allData = $this->backlog->users->get();
+            $this->allData = $this->backlog->users->get();
         }
-        return $allData;
+        return $this->allData;
     }
 
     public function getUserIds()

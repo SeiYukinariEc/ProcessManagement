@@ -6,6 +6,7 @@ use Application\Domain\Repository\IssueRepository;
 use Application\Domain\Repository\ProjectRepository;
 use Application\Domain\Repository\UserRepository;
 use Application\Domain\Service\ProjectService;
+use Application\Domain\Service\TallyService;
 use Application\Domain\Service\UserService;
 
 class Factory
@@ -47,6 +48,19 @@ class Factory
             $this->projectService = new ProjectService();
         }
         return $this->projectService;
+    }
+
+    private $tallyService;
+
+    /**
+     * @return TallyService
+     */
+    public function getTallyService()
+    {
+        if (!isset($this->tallyService)) {
+            $this->tallyService = new TallyService();
+        }
+        return $this->tallyService;
     }
 
     private $userRepository;

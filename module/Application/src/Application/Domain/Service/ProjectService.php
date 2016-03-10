@@ -9,49 +9,60 @@ use Application\Domain\infrastructure\Cache;
 use Application\Domain\Repository\AbstractRepository;
 use Application\Domain\ValueObject\Cost;
 use Ginq\Ginq;
-use Zend\Cache\Storage\Adapter\Filesystem;
 
 class ProjectService
 {
 
+    const CACHE_KEY_WEEK = 'week_project';
+
     public function getProjectsData()
     {
 
-        $projects = Factory::getInstance()->getProjectRepository()->getAll();
+        $cache = Cache::getAdapter();
 
-        $result = Ginq::from($projects)->select(function ($project) {
-            $issues = Factory::getInstance()->getIssueRepository()->getIssueByProjectIdAndStartDate($project['id']);
+        $result = $cache->getItem(self::CACHE_KEY_WEEK, $success);
+        if ($success) {
+            return unserialize($result);
+        } else {
 
-            $sumThisWeekEstimatedHours = Ginq::from($issues)->sum(function ($issue) {
-                return $issue['estimatedHours'];
-            });
+            $projects = Factory::getInstance()->getProjectRepository()->getAll();
 
-            $sumThisWeekActualHours = Ginq::from($issues)->sum(function ($issue) {
-                return $issue['actualHours'];
-            });
+            $result = Ginq::from($projects)->select(function ($project) {
+                $issues = Factory::getInstance()->getIssueRepository()->getIssueByProjectIdAndStartDate($project['id']);
 
-            $nextWeekIssues = Factory::getInstance()->getIssueRepository()->getIssueByProjectIdAndStartDate($project['id'], $week = 1);
+                $sumThisWeekEstimatedHours = Ginq::from($issues)->sum(function ($issue) {
+                    return $issue['estimatedHours'];
+                });
 
-            $sumNextWeekEstimatedHours = Ginq::from($nextWeekIssues)->sum(function ($issue) {
-                return $issue['estimatedHours'];
-            });
+                $sumThisWeekActualHours = Ginq::from($issues)->sum(function ($issue) {
+                    return $issue['actualHours'];
+                });
 
-            $sumNextWeekActualHours = Ginq::from($nextWeekIssues)->sum(function ($issue) {
-                return $issue['actualHours'];
-            });
+                $nextWeekIssues = Factory::getInstance()->getIssueRepository()->getIssueByProjectIdAndStartDate($project['id'], $week = 1);
 
-            $backlogUrl = 'https://' . AbstractRepository::SPACE_NAME . '.backlog.jp/gantt/' . $project['projectKey'];
+                $sumNextWeekEstimatedHours = Ginq::from($nextWeekIssues)->sum(function ($issue) {
+                    return $issue['estimatedHours'];
+                });
 
-            $projectInfo = new ProjectInfo();
-            $projectInfo->setProjectName($project['name']);
-            $projectInfo->setThisWeekEstimatedHours($sumThisWeekEstimatedHours);
-            $projectInfo->setThisWeekActualHours($sumThisWeekActualHours);
-            $projectInfo->setNextWeekEstimatedHours($sumNextWeekEstimatedHours);
-            $projectInfo->setNextWeekActualHours($sumNextWeekActualHours);
-            $projectInfo->setBackLogUrl($backlogUrl);
-            return $projectInfo;
-        })->toArray();
+                $sumNextWeekActualHours = Ginq::from($nextWeekIssues)->sum(function ($issue) {
+                    return $issue['actualHours'];
+                });
 
+                $backlogUrl = 'https://' . AbstractRepository::SPACE_NAME . '.backlog.jp/gantt/' . $project['projectKey'];
+
+                $projectInfo = new ProjectInfo();
+                $projectInfo->setProjectName($project['name']);
+                $projectInfo->setThisWeekEstimatedHours($sumThisWeekEstimatedHours);
+                $projectInfo->setThisWeekActualHours($sumThisWeekActualHours);
+                $projectInfo->setNextWeekEstimatedHours($sumNextWeekEstimatedHours);
+                $projectInfo->setNextWeekActualHours($sumNextWeekActualHours);
+                $projectInfo->setBackLogUrl($backlogUrl);
+                return $projectInfo;
+            })->toArray();
+
+            $cache->setItem(self::CACHE_KEY_WEEK, serialize($result));
+
+        }
         return $result;
     }
 
@@ -59,9 +70,8 @@ class ProjectService
 
     public function getProjectsSumData()
     {
-        $cache = new Filesystem();
-        $cache->getOptions()->setTtl(360);
-//        $cache->removeItem(self::CACHE_KEY_SUM);
+        $cache = Cache::getAdapter();
+
         $result = $cache->getItem(self::CACHE_KEY_SUM, $success);
         if ($success) {
             return unserialize($result);

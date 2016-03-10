@@ -77,7 +77,8 @@ return array(
             'Application\Controller\Index' => Controller\IndexController::class,
             'Application\Controller\Member' => Controller\MemberController::class,
             'Application\Controller\Project' => Controller\ProjectController::class,
-            'Application\Controller\MemberMonth' => Controller\MemberMonthController::class
+            'Application\Controller\MemberMonth' => Controller\MemberMonthController::class,
+            'Application\Controller\Tally' => Controller\TallyController::class
         ),
     ),
     'view_manager' => array(
