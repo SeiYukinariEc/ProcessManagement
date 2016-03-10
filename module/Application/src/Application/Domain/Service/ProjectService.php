@@ -78,6 +78,7 @@ class ProjectService
             $actualCost = (int)$actualHours * Cost::getCostPerHourPerPerson();
             $projectSumInfo->setSumActualCost($actualCost);
             $projectSumInfo->setBackLogUrl($backlogUrl);
+            $projectSumInfo->setCostCompare($estimatedCost - $actualCost);
 
             return $projectSumInfo;
 

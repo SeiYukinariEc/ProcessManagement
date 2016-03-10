@@ -7,6 +7,7 @@
             <th>名前</th>
             <th>予定(時間)</th>
             <th>実績(時間)</th>
+            <th>粗利</th>
             <th>予定(コスト)</th>
             <th>実績(コスト)</th>
         </tr>
@@ -17,16 +18,21 @@
                         <?php echo $this->escapeHtml($project->getProjectName()); ?>
                     </a>
                 </td>
-                <td>
+                <td align="right">
                     <?php echo $this->escapeHtml($project->getSumEstimatedHours()); ?>h
                 </td>
-                <td>
+                <td align="right">
                     <?php echo $this->escapeHtml($project->getSumActualHours()); ?>h
                 </td>
-                <td>
+                <td align="right">
+                    <font color="<?php echo $project->getCostCompare() >= 0 ? 'black' : 'red'; ?> ">
+                        <?php echo number_format($this->escapeHtml($project->getCostCompare())); ?>円
+                    </font>
+                </td>
+                <td align="right">
                     <?php echo number_format($this->escapeHtml($project->getSumEstimatedCost())); ?>円
                 </td>
-                <td>
+                <td align="right">
                     <?php echo number_format($this->escapeHtml($project->getSumActualCost())); ?>円
                 </td>
             </tr>

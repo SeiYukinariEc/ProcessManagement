@@ -89,6 +89,22 @@ class ProjectSumInfo
     /**
      * @return mixed
      */
+    public function getCostCompare()
+    {
+        return $this->costCompare;
+    }
+
+    /**
+     * @param mixed $costCompare
+     */
+    public function setCostCompare($costCompare)
+    {
+        $this->costCompare = $costCompare;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getBackLogUrl()
     {
         return $this->backLogUrl;
@@ -101,6 +117,7 @@ class ProjectSumInfo
     {
         $this->backLogUrl = $backLogUrl;
     }
+
     private $projectName;
 
     private $sumEstimatedHours;
@@ -111,5 +128,8 @@ class ProjectSumInfo
 
     private $sumActualCost;
 
+    private $costCompare;
+
     private $backLogUrl;
+
 }
