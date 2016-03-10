@@ -1,13 +1,14 @@
-<h1>プロジェクト一覧</h1>
+<h1>コスト一覧</h1>
+<h4>1時間あたりのコスト <?php echo $this->perHourPerPerson ?>円</h4>
 <div class="table-responsive">
     <table class="table table-bordered table-striped table-hover">
         <thead>
         <tr class="danger">
             <th>名前</th>
-            <th>予定(今週)</th>
-            <th>実績(今週)</th>
-            <th>予定(来週)</th>
-            <th>実績(来週)</th>
+            <th>予定(時間)</th>
+            <th>実績(時間)</th>
+            <th>予定(コスト)</th>
+            <th>実績(コスト)</th>
         </tr>
         <?php foreach ($this->projects as $project) : ?>
             <tr>
@@ -17,16 +18,16 @@
                     </a>
                 </td>
                 <td>
-                    <?php echo $this->escapeHtml($project->getThisWeekEstimatedHours()); ?>h
+                    <?php echo $this->escapeHtml($project->getSumEstimatedHours()); ?>h
                 </td>
                 <td>
-                    <?php echo $this->escapeHtml($project->getThisWeekActualHours()); ?>h
+                    <?php echo $this->escapeHtml($project->getSumActualHours()); ?>h
                 </td>
                 <td>
-                    <?php echo $this->escapeHtml($project->getNextWeekEstimatedHours()); ?>h
+                    <?php echo number_format($this->escapeHtml($project->getSumEstimatedCost())); ?>円
                 </td>
                 <td>
-                    <?php echo $this->escapeHtml($project->getNextWeekActualHours()); ?>h
+                    <?php echo number_format($this->escapeHtml($project->getSumActualCost())); ?>円
                 </td>
             </tr>
         <?php endforeach; ?>
