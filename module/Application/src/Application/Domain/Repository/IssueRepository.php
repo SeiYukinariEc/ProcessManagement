@@ -44,7 +44,7 @@ final class IssueRepository extends AbstractRepository
 
     public function getIssueByProjectId($projectId)
     {
-        return $this->backlog->issues->get(['projectId' => [$projectId],]);
+        return $this->backlog->issues->get(['projectId' => [$projectId], 'count' => 100]);
     }
 
 }
