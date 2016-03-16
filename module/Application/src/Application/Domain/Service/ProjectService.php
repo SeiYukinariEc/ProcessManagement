@@ -8,6 +8,7 @@ use Application\Domain\Factory\Factory;
 use Application\Domain\infrastructure\Cache;
 use Application\Domain\Repository\AbstractRepository;
 use Application\Domain\ValueObject\Cost;
+use Application\Domain\ValueObject\OrderAmount;
 use Ginq\Ginq;
 
 class ProjectService
@@ -73,10 +74,21 @@ class ProjectService
         $cache = Cache::getAdapter();
 
         $result = $cache->getItem(self::CACHE_KEY_SUM, $success);
-        if ($success) {
+        if (false) {
             return unserialize($result);
         } else {
-            $projects = Factory::getInstance()->getProjectRepository()->getAll();
+            $projectRows = Factory::getInstance()->getProjectRepository()->getAll();
+
+            $projects = Ginq::from($projectRows)
+                ->orderBy(function ($projectRow) {
+                    return $projectRow['archived'] == true ? 1 : 0;
+                })
+                ->thenBy(function ($projectRow) {
+                    return $projectRow['id'];
+                })
+                ->renum()
+                ->toArray();
+
 
             $result = Ginq::from($projects)->select(function ($project) {
                 $issues = Factory::getInstance()->getIssueRepository()->getIssueByProjectId($project['id']);
@@ -93,14 +105,16 @@ class ProjectService
                 $projectSumInfo->setProjectName($project['name']);
                 $archived = ($project['archived'] === true) ? '◯' : '';
                 $projectSumInfo->setArchived($archived);
+                $orderAmount = OrderAmount::getOrderAmountByProjectKey($project['projectKey']);
+                $projectSumInfo->setOrderAmount($orderAmount);
                 $projectSumInfo->setSumEstimatedHours($estimatedHours);
                 $projectSumInfo->setSumActualHours($actualHours);
                 $estimatedCost = (int)$estimatedHours * Cost::getCostPerHourPerPerson();
                 $projectSumInfo->setSumEstimatedCost($estimatedCost);
-                $actualCost = (int)$actualHours * Cost::getCostPerHourPerPerson();
+                $actualCost = $actualHours * Cost::getCostPerHourPerPerson();
                 $projectSumInfo->setSumActualCost($actualCost);
                 $projectSumInfo->setBackLogUrl($backlogUrl);
-                $projectSumInfo->setCostCompare($estimatedCost - $actualCost);
+                $projectSumInfo->setCostCompare($orderAmount - $actualCost);
 
                 return $projectSumInfo;
 

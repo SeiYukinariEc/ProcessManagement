@@ -20,12 +20,10 @@ class MemberMonthController extends AbstractActionController
 
     public function detailAction()
     {
-
         $userId = $this->params()->fromQuery('id');
         if (!$userId) {
             return $this->redirect()->toUrl('application');
         }
-
 
         $viewModel = new MemberMonthDetailViewModel($userId);
         return $viewModel;

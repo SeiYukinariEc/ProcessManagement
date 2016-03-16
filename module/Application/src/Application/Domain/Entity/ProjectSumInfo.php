@@ -38,6 +38,16 @@ class ProjectSumInfo
         $this->archived = $archived;
     }
 
+    public function getOrderAmount()
+    {
+        return $this->orderAmount;
+    }
+
+    public function setOrderAmount($orderAmount)
+    {
+        $this->orderAmount = $orderAmount;
+    }
+
     /**
      * @return mixed
      */
@@ -137,6 +147,8 @@ class ProjectSumInfo
     private $projectName;
 
     private $archived;
+
+    private $orderAmount;
 
     private $sumEstimatedHours;
 

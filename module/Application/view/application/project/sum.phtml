@@ -1,16 +1,26 @@
 <h1>コスト一覧</h1>
 <h4>1時間あたりのコスト <?php echo $this->perHourPerPerson ?>円</h4>
 <div class="table-responsive">
-    <table class="table table-bordered table-striped table-hover">
-        <thead>
+    <table class="table table-bordered table-striped table-hover table-condensed">
+        <thead class="danger" align="center" style="font-weight:bold;">
         <tr class="danger">
-            <th>名前</th>
-            <th>完了</th>
-            <th>予定(時間)</th>
-            <th>実績(時間)</th>
-            <th>粗利</th>
-            <th>予定(コスト)</th>
-            <th>実績(コスト)</th>
+            <td valign="middle" rowspan="2"><br/>名前</td>
+            <td rowspan="2"><br/>完了</td>
+            <td rowspan="2"><br/>受注金額</td>
+            <td rowspan="2"><br/>粗利<br/>
+
+                <div style="font-size:10%;font-weight:normal;">販管費・外注費除く</div>
+            </td>
+            <td colspan="3">時間</td>
+            <td colspan="3">コスト</td>
+        </tr>
+        <tr class="danger">
+            <td>予定</td>
+            <td>実績</td>
+            <td>差</td>
+            <td>予定</td>
+            <td>実績</td>
+            <td>差</td>
         </tr>
         </thead>
         <tbody>
@@ -25,14 +35,23 @@
                     <?php echo $this->escapeHtml($project->getArchived()); ?>
                 </td>
                 <td align="right">
+                    <?php echo number_format($this->escapeHtml($project->getOrderAmount())); ?>円
+                </td>
+                <td align="right" style="font-weight:bolder;">
+                    <font color="<?php echo $project->getCostCompare() >= 0 ? 'black' : 'red'; ?> ">
+                        <?php echo number_format($this->escapeHtml($project->getCostCompare())); ?>円
+                    </font>
+                </td>
+                <td align="right">
                     <?php echo $this->escapeHtml($project->getSumEstimatedHours()); ?>h
                 </td>
                 <td align="right">
                     <?php echo $this->escapeHtml($project->getSumActualHours()); ?>h
                 </td>
                 <td align="right">
-                    <font color="<?php echo $project->getCostCompare() >= 0 ? 'black' : 'red'; ?> ">
-                        <?php echo number_format($this->escapeHtml($project->getCostCompare())); ?>円
+                    <font
+                        color="<?php echo $project->getSumEstimatedHours() - $project->getSumActualHours() >= 0 ? 'black' : 'red'; ?> ">
+                        <?php echo $project->getSumEstimatedHours() - $project->getSumActualHours(); ?>h
                     </font>
                 </td>
                 <td align="right">
@@ -40,6 +59,12 @@
                 </td>
                 <td align="right">
                     <?php echo number_format($this->escapeHtml($project->getSumActualCost())); ?>円
+                </td>
+                <td align="right">
+                    <font
+                        color="<?php echo $project->getSumEstimatedCost() - $project->getSumActualCost() >= 0 ? 'black' : 'red'; ?> ">
+                        <?php echo number_format($project->getSumEstimatedCost() - $project->getSumActualCost()); ?>円
+                    </font>
                 </td>
             </tr>
         <?php endforeach; ?>
