@@ -5,19 +5,19 @@
   },
   {
     "project_key": "ONDA",
-    "order_amount": "0"
+    "order_amount": "567000"
   },
   {
     "project_key": "KONDATE",
-    "order_amount": "6000000"
+    "order_amount": "4500000"
   },
   {
     "project_key": "3HOSYU",
-    "order_amount": "0"
+    "order_amount": "565000"
   },
   {
     "project_key": "RIDE",
-    "order_amount": "0"
+    "order_amount": "450000"
   },
   {
     "project_key": "IMU_RENEWAL",
@@ -25,11 +25,11 @@
   },
   {
     "project_key": "TOTOCHUBU",
-    "order_amount": "0"
+    "order_amount": "998000"
   },
   {
     "project_key": "D_SENSOR",
-    "order_amount": "0"
+    "order_amount": "1700000"
   },
   {
     "project_key": "CCLV2",
@@ -41,6 +41,6 @@
   },
   {
     "project_key": "USSHY",
-    "order_amount": "0"
+    "order_amount": "150000"
   }
 ]
