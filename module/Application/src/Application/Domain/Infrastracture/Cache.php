@@ -11,7 +11,7 @@ class Cache
      * @param int $ttl
      * @return Filesystem
      */
-    public static function getAdapter($ttl = 10800)
+    public static function getAdapter($ttl = 14400)
     {
         $cache = new Filesystem();
         $cache->getOptions()->setTtl($ttl);

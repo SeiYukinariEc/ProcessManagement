@@ -74,7 +74,7 @@ class ProjectService
         $cache = Cache::getAdapter();
 
         $result = $cache->getItem(self::CACHE_KEY_SUM, $success);
-        if (1 == 2) {
+        if ($success) {
             return unserialize($result);
         } else {
             $projectRows = Factory::getInstance()->getProjectRepository()->getAll();
