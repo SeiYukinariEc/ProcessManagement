@@ -49,7 +49,7 @@ class ProjectService
                     return $issue['actualHours'];
                 });
 
-                $backlogUrl = 'https://' . AbstractRepository::SPACE_NAME . '.backlog.jp/gantt/' . $project['projectKey'];
+                $backlogUrl = 'https://' . AbstractRepository::$spaceName . '.backlog.jp/gantt/' . $project['projectKey'];
 
                 $projectInfo = new ProjectInfo();
                 $projectInfo->setProjectName($project['name']);
@@ -74,7 +74,7 @@ class ProjectService
         $cache = Cache::getAdapter();
 
         $result = $cache->getItem(self::CACHE_KEY_SUM, $success);
-        if ($success) {
+        if (1 == 2) {
             return unserialize($result);
         } else {
             $projectRows = Factory::getInstance()->getProjectRepository()->getAll();
@@ -99,7 +99,7 @@ class ProjectService
                     return $issue['actualHours'];
                 });
 
-                $backlogUrl = 'https://' . AbstractRepository::SPACE_NAME . '.backlog.jp/gantt/' . $project['projectKey'];
+                $backlogUrl = 'https://' . AbstractRepository::$spaceName . '.backlog.jp/gantt/' . $project['projectKey'];
 
                 $projectSumInfo = new ProjectSumInfo();
                 $projectSumInfo->setProjectName($project['name']);

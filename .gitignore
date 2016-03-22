@@ -8,4 +8,5 @@ nbproject
 .project
 .settings
 vendor
+/module/Application/src/Application/Domain/ValueObject/config.json
 composer.phar

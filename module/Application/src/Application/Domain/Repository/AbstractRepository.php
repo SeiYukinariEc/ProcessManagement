@@ -4,6 +4,8 @@
 namespace Application\Domain\Repository;
 
 use Application\Domain\infrastructure\Backlog;
+use Application\Domain\Repository\config\ApiKey;
+use Application\Domain\Repository\config\SpaceName;
 
 abstract class AbstractRepository
 {
@@ -12,12 +14,14 @@ abstract class AbstractRepository
      * @var Backlog
      */
     protected $backlog;
-
-    const SPACE_NAME = 'yukinari';
-    const API_KEY = 'CeotBCNF38IzXJGVTlvDphl8ATqEJDnGHaK5XGJeKSTbMA6oJr13XZZTZgRNsSxd';
+    /**
+     * @var string
+     */
+    public static $spaceName;
 
     public function __construct()
     {
-        $this->backlog = new Backlog(self::SPACE_NAME, self::API_KEY);
+        self::$spaceName = SpaceName::get();
+        $this->backlog = new Backlog(self::$spaceName, ApiKey::get());
     }
 }
