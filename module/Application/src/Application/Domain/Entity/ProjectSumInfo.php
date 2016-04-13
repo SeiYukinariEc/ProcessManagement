@@ -51,30 +51,41 @@ class ProjectSumInfo
     /**
      * @return mixed
      */
+    public function getTotalManHour()
+    {
+        return $this->totalManHour;
+    }
+
+    public function setTotalManHour($totalManHour)
+    {
+        $this->totalManHour = $totalManHour;
+    }
+
+    public function getOutsourcingCost()
+    {
+        return $this->outsourcingCost;
+    }
+
+    public function setOutsourcingCost($outsourcingCost)
+    {
+        $this->outsourcingCost = $outsourcingCost;
+    }
+
     public function getSumEstimatedHours()
     {
         return $this->sumEstimatedHours;
     }
 
-    /**
-     * @param mixed $sumEstimatedHours
-     */
     public function setSumEstimatedHours($sumEstimatedHours)
     {
         $this->sumEstimatedHours = $sumEstimatedHours;
     }
 
-    /**
-     * @return mixed
-     */
     public function getSumEstimatedCost()
     {
         return $this->sumEstimatedCost;
     }
 
-    /**
-     * @param mixed $sumEstimatedCost
-     */
     public function setSumEstimatedCost($sumEstimatedCost)
     {
         $this->sumEstimatedCost = $sumEstimatedCost;
@@ -104,41 +115,26 @@ class ProjectSumInfo
         return $this->sumActualCost;
     }
 
-    /**
-     * @param mixed $sumActualCost
-     */
     public function setSumActualCost($sumActualCost)
     {
         $this->sumActualCost = $sumActualCost;
     }
 
-    /**
-     * @return mixed
-     */
     public function getCostCompare()
     {
         return $this->costCompare;
     }
 
-    /**
-     * @param mixed $costCompare
-     */
     public function setCostCompare($costCompare)
     {
         $this->costCompare = $costCompare;
     }
 
-    /**
-     * @return mixed
-     */
     public function getBackLogUrl()
     {
         return $this->backLogUrl;
     }
 
-    /**
-     * @param mixed $backLogUrl
-     */
     public function setBackLogUrl($backLogUrl)
     {
         $this->backLogUrl = $backLogUrl;
@@ -149,6 +145,10 @@ class ProjectSumInfo
     private $archived;
 
     private $orderAmount;
+
+    private $totalManHour;
+
+    private $outsourcingCost;
 
     private $sumEstimatedHours;
 

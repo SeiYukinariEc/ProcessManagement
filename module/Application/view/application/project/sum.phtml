@@ -11,6 +11,16 @@
 
                 <div style="font-size:10%;font-weight:normal;">(税抜)</div>
             </td>
+            <td rowspan="2"><br/>外注費
+                <br/>
+
+                <div style="font-size:10%;font-weight:normal;">(税抜)</div>
+            </td>
+            <td rowspan="2"><br/>見積工数
+                <br/>
+
+                <div style="font-size:10%;font-weight:normal;">(時間)</div>
+            </td>
             <td rowspan="2"><br/>粗利
                 <br/>
 
@@ -41,6 +51,12 @@
                 </td>
                 <td align="right">
                     <?php echo number_format($this->escapeHtml($project->getOrderAmount())); ?>円
+                </td>
+                <td align="right">
+                    <?php echo number_format($this->escapeHtml($project->getOutsourcingCost())); ?>円
+                </td>
+                <td align="right">
+                    <?php echo number_format($this->escapeHtml($project->getTotalManHour())); ?>h
                 </td>
                 <td align="right" style="font-weight:bolder;">
                     <font color="<?php echo $project->getCostCompare() >= 0 ? 'black' : 'red'; ?> ">

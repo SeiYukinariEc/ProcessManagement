@@ -31,4 +31,24 @@ final class OrderAmount
                 return $row->order_amount;
             })->firstOrElse(0);
     }
+
+    public static function getTotalManHourByProjectKey($projectKey)
+    {
+        return Ginq::from(self::getAllData())
+            ->where(function ($row) use ($projectKey) {
+                return $row->project_key === $projectKey;
+            })->select(function ($row) {
+                return $row->total_man_our;
+            })->firstOrElse(0);
+    }
+
+    public static function getOutsourcingByProjectKey($projectKey)
+    {
+        return Ginq::from(self::getAllData())
+            ->where(function ($row) use ($projectKey) {
+                return $row->project_key === $projectKey;
+            })->select(function ($row) {
+                return $row->outsourcing_cost;
+            })->firstOrElse(0);
+    }
 }

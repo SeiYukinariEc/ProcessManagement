@@ -106,6 +106,10 @@ class ProjectService
                 $archived = ($project['archived'] === true) ? '◯' : '';
                 $projectSumInfo->setArchived($archived);
                 $orderAmount = OrderAmount::getOrderAmountByProjectKey($project['projectKey']);
+                $totalManHour = OrderAmount::getTotalManHourByProjectKey($project['projectKey']);
+                $projectSumInfo->setTotalManHour($totalManHour);
+                $outsourcingCost = OrderAmount::getOutsourcingByProjectKey($project['projectKey']);
+                $projectSumInfo->setOutsourcingCost($outsourcingCost);
                 $projectSumInfo->setOrderAmount($orderAmount);
                 $projectSumInfo->setSumEstimatedHours($estimatedHours);
                 $projectSumInfo->setSumActualHours($actualHours);
@@ -114,7 +118,7 @@ class ProjectService
                 $actualCost = $actualHours * Cost::getCostPerHourPerPerson();
                 $projectSumInfo->setSumActualCost($actualCost);
                 $projectSumInfo->setBackLogUrl($backlogUrl);
-                $projectSumInfo->setCostCompare($orderAmount - $actualCost);
+                $projectSumInfo->setCostCompare($orderAmount - $actualCost - $outsourcingCost);
 
                 return $projectSumInfo;
 
