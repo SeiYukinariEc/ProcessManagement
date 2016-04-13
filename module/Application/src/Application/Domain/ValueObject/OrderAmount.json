@@ -1,46 +1,80 @@
 [
   {
     "project_key": "TOUEI",
-    "order_amount": "250000"
+    "order_amount": "250000",
+    "total_man_our": "0",
+    "outsourcing_cost": "35000"
   },
   {
     "project_key": "ONDA",
-    "order_amount": "567000"
+    "order_amount": "567000",
+    "total_man_our": "144",
+    "outsourcing_cost": "0"
   },
   {
     "project_key": "KONDATE",
-    "order_amount": "4500000"
+    "order_amount": "4500000",
+    "total_man_our": "0",
+    "outsourcing_cost": "0"
   },
   {
     "project_key": "3HOSYU",
-    "order_amount": "565000"
+    "order_amount": "565000",
+    "total_man_our": "0",
+    "outsourcing_cost": "0"
   },
   {
     "project_key": "RIDE",
-    "order_amount": "450000"
+    "order_amount": "450000",
+    "total_man_our": "0",
+    "outsourcing_cost": "0"
   },
   {
     "project_key": "IMU_RENEWAL",
-    "order_amount": "1700000"
+    "order_amount": "1700000",
+    "total_man_our": "440",
+    "outsourcing_cost": "0"
   },
   {
     "project_key": "TOTOCHUBU",
-    "order_amount": "998000"
+    "order_amount": "998000",
+    "total_man_our": "224.8",
+    "outsourcing_cost": "0"
   },
   {
     "project_key": "D_SENSOR",
-    "order_amount": "1700000"
+    "order_amount": "1800000",
+    "total_man_our": "364",
+    "outsourcing_cost": "0"
   },
   {
     "project_key": "CCLV2",
-    "order_amount": "1719000"
+    "order_amount": "1719000",
+    "total_man_our": "0",
+    "outsourcing_cost": "0"
   },
   {
     "project_key": "GUIDANCE",
-    "order_amount": "260000"
+    "order_amount": "380000",
+    "total_man_our": "12.5",
+    "outsourcing_cost": "0"
   },
   {
     "project_key": "USSHY",
-    "order_amount": "150000"
+    "order_amount": "150000",
+    "total_man_our": "40",
+    "outsourcing_cost": "0"
+  },
+  {
+    "project_key": "SAKURAGA",
+    "order_amount": "500000",
+    "total_man_our": "120",
+    "outsourcing_cost": "0"
+  },
+  {
+    "project_key": "DENSO",
+    "order_amount": "2400000",
+    "total_man_our": "0",
+    "outsourcing_cost": "750000"
   }
 ]
