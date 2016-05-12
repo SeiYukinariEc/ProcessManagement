@@ -26,7 +26,7 @@
   {
     "project_key": "RIDE",
     "order_amount": "450000",
-    "total_man_our": "0",
+    "total_man_our": "100",
     "outsourcing_cost": "0"
   },
   {
@@ -49,7 +49,7 @@
   },
   {
     "project_key": "CCLV2",
-    "order_amount": "1719000",
+    "order_amount": "1700000",
     "total_man_our": "0",
     "outsourcing_cost": "0"
   },
@@ -76,5 +76,17 @@
     "order_amount": "2400000",
     "total_man_our": "0",
     "outsourcing_cost": "750000"
+  },
+  {
+    "project_key": "NF_RENEWAL",
+    "order_amount": "700000",
+    "total_man_our": "212.8",
+    "outsourcing_cost": "0"
+  },
+  {
+    "project_key": "ITCSAIYOU",
+    "order_amount": "500000",
+    "total_man_our": "120",
+    "outsourcing_cost": "0"
   }
 ]
