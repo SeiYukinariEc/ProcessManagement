@@ -13,7 +13,7 @@
   },
   {
     "project_key": "KONDATE",
-    "order_amount": "4500000",
+    "order_amount": "5325950",
     "total_man_our": "0",
     "outsourcing_cost": "0"
   },
@@ -73,9 +73,9 @@
   },
   {
     "project_key": "DENSO",
-    "order_amount": "2400000",
-    "total_man_our": "0",
-    "outsourcing_cost": "750000"
+    "order_amount": "3310000",
+    "total_man_our": "387.2",
+    "outsourcing_cost": "1101900"
   },
   {
     "project_key": "NF_RENEWAL",
@@ -87,6 +87,24 @@
     "project_key": "ITCSAIYOU",
     "order_amount": "500000",
     "total_man_our": "120",
+    "outsourcing_cost": "0"
+  },
+  {
+    "project_key": "DAIDO_SP_RENEWAL",
+    "order_amount": "796000",
+    "total_man_our": "171.2",
+    "outsourcing_cost": "0"
+  },
+  {
+    "project_key": "YOSHIDA",
+    "order_amount": "286000",
+    "total_man_our": "60",
+    "outsourcing_cost": "0"
+  },
+  {
+    "project_key": "SIXPAD",
+    "order_amount": "800000",
+    "total_man_our": "190.4",
     "outsourcing_cost": "0"
   }
 ]
