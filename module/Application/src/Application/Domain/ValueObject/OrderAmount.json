@@ -118,5 +118,11 @@
     "order_amount": "225000",
     "total_man_our": "44",
     "outsourcing_cost": "0"
+  },
+  {
+    "project_key": "OOIKE",
+    "order_amount": "1828000",
+    "total_man_our": "336.8",
+    "outsourcing_cost": "240000"
   }
 ]
